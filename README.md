@@ -2,6 +2,15 @@
 
 Ce projet R analyse l'impact des formations et certifications sur le parcours des étudiants de iTeam University.
 
+To clone the repository:
+
+```bash
+git clone https://github.com/Tarek-Issaoui/analysis-R-project.git
+cd analysis-R-project
+```
+Je suis utilisé VSCode pour écrire le code R. car je suis plus à l'aise avec VSCode que avec RStudio.
+Mais il est possible de lancer le code R avec RStudio.
+
 ## Structure du Projet
 
 ```

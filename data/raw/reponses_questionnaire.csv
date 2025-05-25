@@ -1,0 +1,16 @@
+niveau_etudes,filiere,annee_etudes,formation_suivie,nombre_formations,type_formation,aide_comprehension_cours,domaines_amelioration,facilite_recherche_emploi,mention_cv,evoque_entretien,utilite_avenir_pro,souhaite_autres_formations,domaines_souhaites,recommandations,suggestions
+Licence,Informatique,2,Oui,2,"Formation en ligne, Certification technique",4,"Compréhension théorique, Compétences pratiques",4,Oui,Oui,5,Oui,Intelligence Artificielle,Certification AWS,Plus de partenariats avec des organismes
+Master,Data Science,1,Oui,3,"Formation en ligne, Bootcamp, Certification technique",5,"Compétences pratiques, Motivation, Confiance en soi",5,Oui,Oui,5,Oui,Cloud Computing,Certification Python,Ateliers pratiques plus fréquents
+Licence,Réseaux,3,Non,0,,1,,1,Non,Non,3,Oui,Cybersécurité,,Plus d'information sur les certifications
+Master,IA,2,Oui,4,"Formation en ligne, Formation en présentiel, Certification technique, Certification linguistique",4,"Compréhension théorique, Compétences pratiques, Motivation",4,Oui,Oui,4,Oui,Deep Learning,TensorFlow Certification,Aide financière pour les certifications
+Licence,Informatique,1,Non,0,,2,,2,Non,Non,4,Oui,Développement Web,,
+Master,Cybersécurité,1,Oui,2,"Formation en ligne, Certification technique",5,"Compétences pratiques, Confiance en soi",5,Oui,Oui,5,Oui,Sécurité Cloud,CompTIA Security+,Plus de temps pour les certifications
+Licence,Data Science,2,Oui,1,Formation en ligne,3,"Compréhension théorique, Motivation",3,Oui,Non,4,Oui,Machine Learning,Coursera Specializations,
+Master,Réseaux,2,Oui,3,"Formation en présentiel, Certification technique, Certification linguistique",4,"Compétences pratiques, Confiance en soi",4,Oui,Oui,5,Oui,Administration Système,CCNA,Meilleure reconnaissance des certifications
+Licence,IA,3,Oui,2,"Formation en ligne, Bootcamp",4,"Motivation, Confiance en soi",3,Oui,Non,4,Oui,Computer Vision,Deep Learning Specialization,
+Master,Informatique,1,Oui,5,"Formation en ligne, Formation en présentiel, Bootcamp, Certification technique, Certification linguistique",5,"Compréhension théorique, Compétences pratiques, Motivation, Confiance en soi",5,Oui,Oui,5,Oui,Architecture Cloud,AWS Solutions Architect,Créer un centre de certification
+Licence,Cybersécurité,2,Non,0,,2,,2,Non,Non,3,Oui,Ethical Hacking,,Plus de bootcamps intensifs
+Master,Data Science,2,Oui,3,"Formation en ligne, Certification technique, Certification linguistique",4,"Compétences pratiques, Motivation",4,Oui,Oui,5,Oui,Big Data,Google Data Analytics,Sessions de préparation aux certifications
+Licence,Réseaux,1,Oui,1,Certification technique,3,Compétences pratiques,3,Oui,Non,4,Oui,Cloud Networking,CCNA,
+Master,IA,1,Oui,4,"Formation en ligne, Bootcamp, Certification technique, Certification linguistique",5,"Compréhension théorique, Compétences pratiques, Motivation, Confiance en soi",5,Oui,Oui,5,Oui,NLP,IBM AI Engineering,Partenariats avec plus d'entreprises
+Licence,Informatique,3,Oui,2,"Formation en ligne, Formation en présentiel",4,"Compétences pratiques, Motivation",4,Oui,Non,4,Oui,Mobile Development,Flutter Development,Plus de formations pratiques

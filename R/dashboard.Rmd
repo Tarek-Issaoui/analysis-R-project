@@ -1,0 +1,159 @@
+---
+title: "Analyse des Réponses au Questionnaire"
+author: "Rapport Automatisé"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 10,
+  fig.height = 6
+)
+
+# Charger les packages nécessaires
+source("setup.R")
+
+# Charger les données
+data_file <- "../data/processed/clean_reponses_questionnaire.csv"
+if (!file.exists(data_file)) {
+  stop("Données non trouvées. Exécutez d'abord import.R")
+}
+data <- read_csv(data_file)
+
+# Charger les résultats d'analyse s'ils existent
+results_file <- "../output/analysis_results.rds"
+if (file.exists(results_file)) {
+  results <- readRDS(results_file)
+}
+```
+
+## Résumé des Résultats
+
+### Statistiques Principales
+
+```{r stats}
+if (exists("results")) {
+  stats <- results$statistics
+  
+  knitr::kable(
+    data.frame(
+      Métrique = c(
+        "Nombre total de répondants",
+        "Pourcentage ayant suivi des formations",
+        "Moyenne du nombre de formations",
+        "Moyenne de l'utilité perçue (1-5)"
+      ),
+      Valeur = c(
+        stats$total_respondents,
+        sprintf("%.1f%%", stats$percent_with_training),
+        sprintf("%.2f", stats$avg_formations),
+        sprintf("%.2f", stats$avg_utility)
+      )
+    ),
+    format = "html",
+    caption = "Statistiques descriptives"
+  )
+}
+```
+
+## Visualisations
+
+### 1. Distribution des Formations Suivies
+
+```{r plot1}
+ggplot(data, aes(x = formation_suivie)) +
+  geom_bar(fill = "steelblue") +
+  labs(
+    title = "Répartition des étudiants selon les formations suivies",
+    x = "A suivi une formation",
+    y = "Nombre d'étudiants"
+  ) +
+  theme_minimal()
+```
+
+### 2. Impact sur la Compréhension des Cours
+
+```{r plot2}
+ggplot(data, aes(x = aide_comprehension_cours)) +
+  geom_bar(fill = "orange") +
+  labs(
+    title = "Impact des formations sur la compréhension des cours",
+    x = "Niveau d'aide (1-5)",
+    y = "Nombre d'étudiants"
+  ) +
+  theme_minimal()
+```
+
+### 3. Utilité pour l'Avenir Professionnel
+
+```{r plot3}
+ggplot(data, aes(x = utilite_avenir_pro)) +
+  geom_bar(fill = "forestgreen") +
+  labs(
+    title = "Perception de l'utilité pour l'avenir professionnel",
+    x = "Niveau d'utilité (1-5)",
+    y = "Nombre d'étudiants"
+  ) +
+  theme_minimal()
+```
+
+### 4. Relation entre Formations et Recherche d'Emploi
+
+```{r plot4}
+ggplot(data, aes(x = as.numeric(facilite_recherche_emploi), 
+                 y = nombre_formations)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Relation entre nombre de formations et recherche d'emploi",
+    x = "Facilité de recherche d'emploi (1-5)",
+    y = "Nombre de formations suivies"
+  ) +
+  theme_minimal()
+```
+
+## Corrélations
+
+```{r correlations}
+if (exists("results")) {
+  correlations <- results$correlations
+  
+  # Créer une heatmap des corrélations
+  correlation_data <- as.data.frame(correlations)
+  correlation_data$variable1 <- rownames(correlation_data)
+  correlation_long <- tidyr::gather(correlation_data, 
+                                  variable2, 
+                                  value, 
+                                  -variable1)
+  
+  ggplot(correlation_long, 
+         aes(x = variable1, y = variable2, fill = value)) +
+    geom_tile() +
+    scale_fill_gradient2(low = "red", mid = "white", high = "blue", 
+                        midpoint = 0, limits = c(-1, 1)) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(title = "Matrice de Corrélation",
+         x = "", y = "", fill = "Corrélation")
+}
+```
+
+## Conclusions
+
+Ce dashboard présente une vue d'ensemble des résultats de l'analyse du questionnaire. Les visualisations montrent :
+
+1. La distribution des étudiants ayant suivi des formations
+2. L'impact perçu sur la compréhension des cours
+3. L'utilité perçue pour l'avenir professionnel
+4. La relation entre le nombre de formations et la facilité de recherche d'emploi
+
+Les corrélations entre les différentes variables sont également présentées sous forme de heatmap pour une compréhension plus approfondie des relations entre les variables.
